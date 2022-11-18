@@ -42,7 +42,6 @@ function guardarCamisetas(ropaQueue) {
     return obj;
 };
 
-
 // ⚠️ NO MODIFICAR NADA POR DEBAJO DE ESTA LÍNEA ⚠️
 module.exports = {
     guardarCamisetas
