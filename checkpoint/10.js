@@ -34,11 +34,23 @@ const { BinarySearchTree } = require('../DS');
 //  🟢 Agregar la propiedad "vendido: true" a los nodos que coincidan con alguno de los elementos del array
 //  🟢 Si el arreglo viene vacío, la función retorna false!
 
-BinarySearchTree.prototype.vender = function (array) {
+
+BinarySearchTree.prototype.vender = function(array) {
     // Tu código aquí:
-  }
-  
-  // ⚠️ NO MODIFICAR NADA POR DEBAJO DE ESTA LÍNEA ⚠️
-  module.exports = {
+    if (array.length === 0) return false;
+    this.left && this.left.vender(array);
+    this.right && this.right.vender(array);
+    for (let i = 0; i < array.length; i++) {
+        if (this.value.nombre === array[i]) {
+            array.splice(i, 1);
+            this.value.vendido = true;
+            break;
+        }
+    }
+    return this;
+};
+
+// ⚠️ NO MODIFICAR NADA POR DEBAJO DE ESTA LÍNEA ⚠️
+module.exports = {
     BinarySearchTree
-  };
+};
