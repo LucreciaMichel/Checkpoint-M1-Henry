@@ -33,10 +33,17 @@ const Queue = require("../DS").Queue;
 // TIP: Chequear el archivo DS.js para ver la función constructora Queue, y ver sus métodos disponibles.
 
 function guardarCamisetas(ropaQueue) {
-  // Tu código aquí:
+    // Tu código aquí:
+    let obj = {};
+    while (ropaQueue.size()) {
+        let elemento = ropaQueue.dequeue();
+        obj[elemento] = elemento;
+    }
+    return obj;
 };
+
 
 // ⚠️ NO MODIFICAR NADA POR DEBAJO DE ESTA LÍNEA ⚠️
 module.exports = {
-  guardarCamisetas
+    guardarCamisetas
 };
