@@ -23,10 +23,28 @@
 // ACLARACIÓN: Chequear el output de los test, para poder colocar los mensajes como corresponden!
 
 function chequearDisponibilidad(ropas) {
-  // Tu código aquí:
+    // Tu código aquí:
+    return function(stock) {
+        if (stock.length === 0) return "No se encontraron las prendas solicitadas";
+        let cantDisponibles = 0;
+        for (let i = 0; i < ropas.length; i++) {
+            for (let j = 0; j < stock.length; j++) {
+                if (ropas[i] === stock[j]) {
+                    cantDisponibles++;
+                    break;
+                }
+            }
+        }
+        if (cantDisponibles === ropas.length) return "Todas las prendas fueron encontradas";
+        if (cantDisponibles > 0) {
+            return cantDisponibles + " de las " + ropas.length + " prendas solicitadas se encuentran en el stock";
+        } else {
+            return "No se encontraron las prendas solicitadas";
+        }
+    };
 }
 
 // ⚠️ NO MODIFICAR NADA POR DEBAJO DE ESTA LÍNEA ⚠️
 module.exports = {
-  chequearDisponibilidad,
+    chequearDisponibilidad,
 };
