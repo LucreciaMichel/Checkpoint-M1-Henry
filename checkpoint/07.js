@@ -20,12 +20,21 @@ const { LinkedList } = require('../DS');
 // 🟢 Retornar un objeto con la prenda de ropa y su stock a modo de clave/valor mostrado en el ejemplo arriba
 // 🟢 Si la lista está vacía retornar un mensaje que diga exactamente: "No hay stock para migrar"
 
-LinkedList.prototype.migrarStock = function () {
-  // Tu código aquí:
-  
-}
+LinkedList.prototype.migrarStock = function() {
+    // Tu código aquí: 
+    let current = this.head;
+    if (!current) return "No hay stock para migrar";
+    let objLista = {};
+    while (current) {
+        let prop = current.value.nombre;
+        let value = current.value.stock;
+        objLista[prop] = value;
+        current = current.next;
+    }
+    return objLista;
+};
 
 // ⚠️ NO MODIFICAR NADA POR DEBAJO DE ESTA LÍNEA ⚠️
 module.exports = {
-  LinkedList
+    LinkedList
 };
