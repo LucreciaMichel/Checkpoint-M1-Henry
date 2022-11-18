@@ -25,13 +25,25 @@ const Stack = require("../DS").Stack;
 //  - Una propiedad "pantalonesRestantes" que sea un stack que contenga los pantalones restantes
 //  🟢 Retornar false si el stack viene vacío
 
-function apilarPantalones(array, talla) {
-  // Tu código aquí:
- 
-};
 
+function apilarPantalones(array, talla) {
+    // Tu código aquí:
+    let pantalones = {
+        pantalonesEncontrados: new Stack(),
+        pantalonesRestantes: new Stack()
+    };
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === talla) {
+            pantalones.pantalonesEncontrados.push(array[i]);
+        } else {
+            pantalones.pantalonesRestantes.push(array[i]);
+        }
+    }
+    if (pantalones.pantalonesEncontrados.size() === 0) return false;
+    return pantalones;
+};
 
 // ⚠️ NO MODIFICAR NADA POR DEBAJO DE ESTA LÍNEA ⚠️
 module.exports = {
-  apilarPantalones
+    apilarPantalones
 };
