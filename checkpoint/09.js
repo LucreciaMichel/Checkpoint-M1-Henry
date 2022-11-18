@@ -35,10 +35,15 @@ const { BinarySearchTree } = require("../DS");
 // ACLARACIÓN: Dentro del árbol se encuentran objetos, tal como lo muestra el ejemplo más arriba!
 // TIP: Podés usar default parameters para ayudarte.
 
-BinarySearchTree.prototype.obtenerPrendas = function (string) {
-  // Tu código aquí:
+BinarySearchTree.prototype.obtenerPrendas = function(string, array = []) {
+    // Tu código aquí:
+    this.left && this.left.obtenerPrendas(string, array);
+    this.right && this.right.obtenerPrendas(string, array);
+    if (this.value.nombre === string) array.push(string);
+    return array;
 };
+
 // ⚠️ NO MODIFICAR NADA POR DEBAJO DE ESTA LÍNEA ⚠️
 module.exports = {
-  BinarySearchTree,
+    BinarySearchTree,
 };
