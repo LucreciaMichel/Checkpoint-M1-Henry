@@ -21,10 +21,14 @@
 // Tip: Podés usar el operador delete para los objetos.
 
 function atenderClientes(clientes) {
-  // Tu código aquí:
+    // Tu código aquí:
+    for (const key in clientes) {
+        delete clientes[key];
+    }
+    return clientes;
 }
 
 // ⚠️ NO MODIFICAR NADA POR DEBAJO DE ESTA LÍNEA ⚠️
 module.exports = {
-  atenderClientes,
+    atenderClientes,
 };
