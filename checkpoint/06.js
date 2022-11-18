@@ -17,11 +17,23 @@
 //  🟢 NO utilizar el método sort de array!
 
 function ordenarRopa(ropa) {
-  // Tu código aquí:
-  
+    // Tu código aquí:
+    let swap = true;
+    while (swap) {
+        swap = false;
+        for (let i = 0; i < ropa.length; i++) {
+            if (ropa[i + 1] && ropa[i].precio < ropa[i + 1].precio) {
+                swap = true;
+                let aux = ropa[i];
+                ropa[i] = ropa[i + 1];
+                ropa[i + 1] = aux;
+            }
+        }
+    }
+    return ropa;
 }
 
 // ⚠️ NO MODIFICAR NADA POR DEBAJO DE ESTA LÍNEA ⚠️
 module.exports = {
-  ordenarRopa
+    ordenarRopa
 };
