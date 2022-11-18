@@ -23,15 +23,42 @@ const { LinkedList } = require('../DS');
 // 🟢 Si el arreglo viene vacío retornar la LinkedList COMPLETA.
 // Tip: Tanto las LinkedList como los arreglos, contendrán siempre strings.
 
-LinkedList.prototype.tacharLista = function(lista) {
-  // Tu código aquí:
-  
-}
-  
-  
+LinkedList.prototype.tacharLista = function(array) {
+    // Tu código aquí:
+    if (array.length === 0) return this;
+    for (let i = 0; i < array.length; i++) {
+        let current = this.head;
+        //lista vacia
+        if (!current) return this;
+        //si la lista tiene un solo nodo
+        if (!current.next) {
+            if (current.value === array[i]) {
+                this.head = null;
+            }
+        }
+        //se busca sobre el primer nodo
+        if (current.next) {
+            if (current.value === array[i]) {
+                this.head = current.next;
+            }
+        }
+        //lista de un nodo o mas
+        while (current.next) {
+            if (current.next.value === array[i]) {
+                if (current.next.next) {
+                    current.next = current.next.next;
+                } else {
+                    current.next = null;
+                }
+            }
+            current = current.next;
+        }
+    }
+    return this;
+};
 
 
 // ⚠️ NO MODIFICAR NADA POR DEBAJO DE ESTA LÍNEA ⚠️
 module.exports = {
-  LinkedList
+    LinkedList
 };
