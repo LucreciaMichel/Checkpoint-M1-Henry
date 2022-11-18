@@ -18,11 +18,20 @@
 //
 // TIP: tambien podes usar un rest parameter.
 
-function liquidacion(array) {
-  // Tu código aquí:
+function liquidacion(array, prendas = []) {
+    // Tu código aquí:
+    let prenda = array[0];
+    if (array.length === 0) return prendas.reverse();
+    for (const key in prenda) {
+        if (prenda[key].hasOwnProperty("LIQUIDACION")) {
+            prendas.push(prenda);
+        }
+    }
+    array.shift();
+    return liquidacion(array, prendas); //return  prendas.concat(liquidacion(array, prendas));    
 }
 
 // ⚠️ NO MODIFICAR NADA POR DEBAJO DE ESTA LÍNEA ⚠️
 module.exports = {
-  liquidacion,
+    liquidacion,
 };
